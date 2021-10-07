@@ -1,19 +1,29 @@
 <template lang="pug">
 .home
   img.homeImg(src='https://i.imgur.com/HZMnjT6.png', alt='alt')
-  BaseButton.homeBtn(@click='handleBtnClick') {{ $t("register") }}
+  BaseButton.homeBtn(@click='toggleModal') {{ $t("register") }}
+  RegisterModal(:isOpen='isOpenRegisterModal', @onCancel='toggleModal')
 </template>
 
 <script>
+import RegisterModal from '@/components/modals/RegisterModal'
+
 export default {
+  components: {
+    RegisterModal,
+  },
+
   data() {
     return {
       isOpenRegisterModal: false,
     }
   },
+
   methods: {
-    handleBtnClick(e) {
-      this.isOpenRegisterModal = !this.isOpenRegisterModal
+    toggleModal() {
+      setTimeout(() => {
+        this.isOpenRegisterModal = !this.isOpenRegisterModal
+      }, 100)
     },
   },
 }

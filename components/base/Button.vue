@@ -1,10 +1,29 @@
 <template lang="pug">
-button.btn(type='submit', @click='createRipple', v-on='$listeners')
+button.btn(
+  type='submit',
+  @click='createRipple',
+  v-on='$listeners',
+  :class='classes'
+)
   slot
 </template>
 
 <script>
+import { enumProps } from '@/helper/props'
+
 export default {
+  props: {
+    variant: enumProps('primary', 'secondary'),
+  },
+
+  computed: {
+    classes() {
+      return {
+        secondary: this.variant === 'secondary',
+      }
+    },
+  },
+
   methods: {
     createRipple(e) {
       this.handleAnimation(e)
@@ -52,6 +71,10 @@ export default {
 
   cursor: pointer;
   overflow: hidden;
+
+  &.secondary {
+    background: var(--colorSecondary);
+  }
 
   .ripple {
     z-index: 100;
