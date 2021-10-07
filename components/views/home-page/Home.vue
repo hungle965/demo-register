@@ -21,9 +21,7 @@ export default {
 
   methods: {
     toggleModal() {
-      setTimeout(() => {
-        this.isOpenRegisterModal = !this.isOpenRegisterModal
-      }, 100)
+      this.isOpenRegisterModal = !this.isOpenRegisterModal
     },
   },
 }
