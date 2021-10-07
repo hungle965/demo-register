@@ -1,12 +1,24 @@
 <template lang="pug">
 .home
   img.homeImg(src='https://i.imgur.com/HZMnjT6.png', alt='alt')
-  BaseButton.homeBtn 123
+  BaseButton.homeBtn(@click='handleBtnClick') {{ $t("register") }}
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      isOpenRegisterModal: false,
+    }
+  },
+  methods: {
+    handleBtnClick(e) {
+      this.isOpenRegisterModal = !this.isOpenRegisterModal
+    },
+  },
+}
 </script>
+
 
 <style lang="scss" >
 @use '@/assets/css/_mix.scss' as *;
@@ -25,7 +37,7 @@ export default {}
   }
 
   .homeBtn {
-    margin-top: spacing(base);
+    margin-top: spacing(loose);
   }
 }
 </style>

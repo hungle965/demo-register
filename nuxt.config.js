@@ -13,7 +13,7 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@/libs/modules/head.module'],
+  modules: ['@/libs/modules/head.module', '@/libs/modules/i18n.module'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

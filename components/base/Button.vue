@@ -1,5 +1,6 @@
 <template lang="pug">
-button.btn(type='submit', @click='createRipple') Begin
+button.btn(type='submit', @click='createRipple', v-on='$listeners')
+  slot
 </template>
 
 <script>
@@ -45,7 +46,7 @@ export default {
   width: 100%;
   max-width: 240px;
 
-  background: #3296b6;
+  background: var(--colorPrimary);
   box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 100px;
 
