@@ -6,6 +6,7 @@
 :root {
   /*===[ Colors ]===*/
   --colorBodyText: #fff;
+  --colorText2: #1d222f;
   --colorBg: rgba(33, 44, 60, 1);
   --colorPrimary: #3296b6;
   --colorSecondary: #d03250;
@@ -48,8 +49,6 @@
   /*===[ Styles ]===*/
   color: var(--colorBodyText);
   font: 16px/24px var(--fontBody);
-
-  box-sizing: border-box;
 }
 
 body {
@@ -59,4 +58,8 @@ body {
 
   background-color: rgba(33, 44, 60, 1);
   color: var(--colorBodyText);
+}
+
+* {
+  box-sizing: border-box;
 }

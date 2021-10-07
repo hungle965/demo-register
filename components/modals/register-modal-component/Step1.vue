@@ -1,7 +1,12 @@
 <template lang="pug">
 RegisterLayout(@onCancel='$emit("onCancel")')
   .step1
-    | user name
+    BaseInput(:label='$t("username")', :placeholder='$t("enter_username")')
+    BaseInput(
+      :label='$t("email_address")',
+      :placeholder='$t("enter_email_address")'
+    )
+    BaseButton(disabled) {{ $t("next") }}
 </template>
 <script>
 import RegisterLayout from '@/components/modals/register-layout/RegisterLayout'
@@ -12,12 +17,9 @@ export default {
 }
 </script>
 <style lang="scss" >
-.step1 {
-  min-height: 300px;
-  background: white;
-  border-radius: 16px 16px 0 0;
-  overflow: hidden;
+@use '@/assets/css/_mix.scss' as *;
 
-  color: #1d222f;
+.step1 {
+  @include bodyRegisterModal;
 }
 </style>

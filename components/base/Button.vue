@@ -1,19 +1,21 @@
 <template lang="pug">
 button.btn(
   type='submit',
-  @click='createRipple',
+  :disabled='disabled',
+  :class='classes',
   v-on='$listeners',
-  :class='classes'
+  @click='createRipple'
 )
   slot
 </template>
 
 <script>
-import { enumProps } from '@/helper/props'
+import { enumProps, booleanProp } from '@/helper/props'
 
 export default {
   props: {
     variant: enumProps('primary', 'secondary'),
+    disabled: booleanProp(),
   },
 
   computed: {

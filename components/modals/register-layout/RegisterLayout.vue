@@ -38,7 +38,7 @@
   position: relative;
   z-index: 100;
   width: 100%;
-  max-width: 280px;
+  max-width: 290px;
   height: auto;
 
   background: linear-gradient(
