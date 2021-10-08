@@ -8,3 +8,14 @@
   opacity: 0;
   transform: translateY(10px);
 }
+
+.text-fade-enter-active,
+.text-fade-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.text-fade-enter,
+.text-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}

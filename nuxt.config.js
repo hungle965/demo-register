@@ -4,7 +4,11 @@ export default {
   css: ['@/assets/css/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/libs/plugins/wave'],
+  plugins: [
+    '@/libs/plugins/wave',
+    '@/libs/plugins/api-instance',
+    '@/libs/plugins/vuelidate',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

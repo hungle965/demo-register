@@ -374,6 +374,8 @@
       background: #121b20;
       border: 3px solid #3296b5;
       border-radius: 100%;
+
+      cursor: pointer;
     }
   }
 

@@ -7,7 +7,8 @@ button.btn(
   v-on='$listeners',
   @click='createRipple'
 )
-  slot
+  .loading(v-if='loading') loading...
+  slot(v-else)
 </template>
 
 <script>
@@ -17,6 +18,7 @@ export default {
   props: {
     variant: enumProps('primary', 'secondary'),
     disabled: booleanProp(),
+    loading: booleanProp(),
   },
 
   computed: {

@@ -2,7 +2,8 @@
 .inputContainer(:class='classes')
   .label(v-if='label') {{ label }}
   input.input(v-model='value', :placeholder='placeholder', v-on='$listeners')
-  .textError(v-if='error') {{ error }}
+  transition(name='text-fade')
+    .textError(v-if='error') {{ error }}
 </template>
 
 <script>
