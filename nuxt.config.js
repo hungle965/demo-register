@@ -8,6 +8,7 @@ export default {
     '@/libs/plugins/wave',
     '@/libs/plugins/api-instance',
     '@/libs/plugins/vuelidate',
+    '@/libs/plugins/swiper.client',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

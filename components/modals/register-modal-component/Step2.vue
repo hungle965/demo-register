@@ -1,15 +1,17 @@
 <template lang="pug">
-form.step1
+form.step2
   BaseInput(
     v-model='username',
-    :label='$t("username")',
-    :placeholder='$t("enter_username")',
+    type='password',
+    :label='$t("password")',
+    :placeholder='$t("enter_password")',
     :error='usernameError'
   )
   BaseInput(
     v-model='email',
-    :label='$t("email_address")',
-    :placeholder='$t("enter_email_address")',
+    type='password',
+    :label='$t("confirm_password")',
+    :placeholder='$t("re_confirm_password")',
     :error='emailError'
   )
   BaseButton(
@@ -70,8 +72,6 @@ export default {
       // handle validate input
       this.$v.$touch()
 
-      console.log(this.$v)
-
       // validate failed
       if (this.$v.$invalid) return
 
@@ -115,7 +115,7 @@ export default {
 <style lang="scss" >
 @use '@/assets/css/_mix.scss' as *;
 
-.step1 {
+.step2 {
   @include bodyRegisterModal;
 }
 </style>

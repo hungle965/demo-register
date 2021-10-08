@@ -52,6 +52,7 @@
   > .topBanner {
     @include flexCenter;
 
+    z-index: 100;
     position: absolute;
     top: -4px;
     width: calc(100% - 10px);

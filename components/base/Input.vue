@@ -1,9 +1,20 @@
 <template lang="pug">
 .inputContainer(:class='classes')
   .label(v-if='label') {{ label }}
-  input.input(v-model='value', :placeholder='placeholder', v-on='$listeners')
+  input.input(
+    v-model='value',
+    :placeholder='placeholder',
+    :type='calTypeValue',
+    v-on='$listeners'
+  )
   transition(name='text-fade')
     .textError(v-if='error') {{ error }}
+  img.iconShowPassword(
+    v-if='type === "password"',
+    src='@/assets/img/svg/show-password.svg',
+    alt='icon',
+    @click='toggleTypePassword'
+  )
 </template>
 
 <script>
@@ -14,6 +25,7 @@ export default {
     label: stringProp(),
     placeholder: stringProp(),
     error: stringProp(),
+    type: stringProp('text'),
   },
 
   model: {
@@ -23,7 +35,11 @@ export default {
 
   data() {
     return {
+      // model state
       value: '',
+
+      // ui state
+      showText: false,
     }
   },
 
@@ -32,6 +48,12 @@ export default {
       return {
         error: this.error,
       }
+    },
+
+    calTypeValue() {
+      if (this.type !== 'password') return this.type
+      if (this.showText) return 'text'
+      return 'password'
     },
   },
 
@@ -47,12 +69,20 @@ export default {
   created() {
     this.value = this.propVal
   },
+
+  methods: {
+    toggleTypePassword() {
+      this.showText = !this.showText
+      console.log('show text', this.showText)
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .inputContainer {
   width: 100%;
+  position: relative;
 
   .label {
     margin-bottom: 4px;
@@ -72,6 +102,7 @@ export default {
 
     text-align: center;
     color: var(--colorText2);
+    font-size: 12px;
 
     &::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -104,6 +135,16 @@ export default {
     font-weight: 400;
     line-height: 16px;
     text-align: center;
+  }
+
+  .iconShowPassword {
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    bottom: calc((38px / 2) - 5px);
+
+    margin: auto 10px;
+    cursor: pointer;
   }
 
   &.error {

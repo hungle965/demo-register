@@ -15,4 +15,10 @@ export default {
   email_required: 'Email address is not required.',
   email_invalid: 'Email address invalid.',
   email_used: 'Email address already in use. Please log in.',
+
+  password: 'Password',
+  enter_password: 'Enter password',
+
+  confirm_password: 'Confirm password',
+  re_confirm_password: 'Re-confirm password',
 }
