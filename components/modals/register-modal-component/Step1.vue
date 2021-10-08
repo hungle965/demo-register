@@ -1,8 +1,13 @@
 <template lang="pug">
 RegisterLayout(@onCancel='$emit("onCancel")')
   .step1
-    BaseInput(:label='$t("username")', :placeholder='$t("enter_username")')
     BaseInput(
+      v-model='username',
+      :label='$t("username")',
+      :placeholder='$t("enter_username")'
+    )
+    BaseInput(
+      v-model='emailAddress',
       :label='$t("email_address")',
       :placeholder='$t("enter_email_address")'
     )
@@ -13,6 +18,13 @@ import RegisterLayout from '@/components/modals/register-layout/RegisterLayout'
 export default {
   components: {
     RegisterLayout,
+  },
+
+  data() {
+    return {
+      username: '',
+      emailAddress: '',
+    }
   },
 }
 </script>

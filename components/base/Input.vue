@@ -1,7 +1,7 @@
 <template lang="pug">
 .inputContainer(:class='classes')
   .label(v-if='label') {{ label }}
-  input.input(:placeholder='placeholder', v-on='$listeners')
+  input.input(v-model='value', :placeholder='placeholder', v-on='$listeners')
   .textError(v-if='error') {{ error }}
 </template>
 
@@ -9,9 +9,21 @@
 import { stringProp } from '@/helper/props'
 export default {
   props: {
+    propVal: stringProp(),
     label: stringProp(),
     placeholder: stringProp(),
     error: stringProp(),
+  },
+
+  model: {
+    prop: 'propVal',
+    event: 'onChange',
+  },
+
+  data() {
+    return {
+      value: '',
+    }
   },
 
   computed: {
@@ -20,6 +32,19 @@ export default {
         error: this.error,
       }
     },
+  },
+
+  watch: {
+    value(val) {
+      this.$emit('onChange', val)
+    },
+    propVal(val) {
+      this.value = val
+    },
+  },
+
+  created() {
+    this.value = this.propVal
   },
 }
 </script>
