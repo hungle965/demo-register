@@ -193,15 +193,8 @@
 
       .decor2 {
         position: absolute;
-        left: -24px;
-        bottom: 0;
-        z-index: 200;
-      }
-
-      .decor2 {
-        position: absolute;
-        left: -23px;
-        bottom: 0;
+        left: -32px;
+        bottom: 2px;
         z-index: 200;
       }
 

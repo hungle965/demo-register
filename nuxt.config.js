@@ -4,7 +4,7 @@ export default {
   css: ['@/assets/css/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/libs/plugins/wave'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -13,7 +13,11 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@/libs/modules/head.module', '@/libs/modules/i18n.module'],
+  modules: [
+    '@/libs/modules/head.module',
+    '@/libs/modules/i18n.module',
+    'v-wave/nuxt',
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

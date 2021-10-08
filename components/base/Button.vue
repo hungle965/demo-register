@@ -1,5 +1,6 @@
 <template lang="pug">
 button.btn(
+  v-wave,
   type='submit',
   :disabled='disabled',
   :class='classes',
@@ -76,6 +77,8 @@ export default {
   cursor: pointer;
   overflow: hidden;
 
+  transition: background 400ms;
+
   &.secondary {
     background: var(--colorSecondary);
   }
@@ -83,22 +86,6 @@ export default {
   &.disabled {
     cursor: not-allowed;
     background: var(--colorDisabledButton);
-  }
-
-  .ripple {
-    z-index: 200;
-    position: absolute; /* The absolute position we mentioned earlier */
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple 600ms linear;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-}
-
-@keyframes ripple {
-  to {
-    transform: scale(4);
-    opacity: 0;
   }
 }
 </style>
