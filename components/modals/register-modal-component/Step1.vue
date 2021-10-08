@@ -1,11 +1,7 @@
 <template lang="pug">
 RegisterLayout(@onCancel='$emit("onCancel")')
   .step1
-    BaseInput(
-      :label='$t("username")',
-      :placeholder='$t("enter_username")',
-      error='Username already in use. Try another one.'
-    )
+    BaseInput(:label='$t("username")', :placeholder='$t("enter_username")')
     BaseInput(
       :label='$t("email_address")',
       :placeholder='$t("enter_email_address")'

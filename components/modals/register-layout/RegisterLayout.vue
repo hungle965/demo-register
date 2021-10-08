@@ -27,7 +27,7 @@
       img(src='@/assets/img/svg/question.svg', alt='alt')
   slot
   .footer
-    BaseButton(variant='secondary') {{ $t("cancel") }}
+    BaseButton(variant='secondary', @click='$emit("onCancel")') {{ $t("cancel") }}
 </template>
 
 <style lang="scss" >
