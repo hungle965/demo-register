@@ -7,4 +7,5 @@ export default {
 
   enter_email_address: 'Enter email address',
   email_address: 'Email address',
+  next: 'Next',
 }

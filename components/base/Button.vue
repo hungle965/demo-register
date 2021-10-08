@@ -22,6 +22,7 @@ export default {
     classes() {
       return {
         secondary: this.variant === 'secondary',
+        disabled: this.disabled,
       }
     },
   },
@@ -62,6 +63,7 @@ export default {
   @include textStyleButton;
 
   position: relative;
+  z-index: 100;
 
   height: 40px;
   width: 100%;
@@ -78,13 +80,18 @@ export default {
     background: var(--colorSecondary);
   }
 
+  &.disabled {
+    cursor: not-allowed;
+    background: var(--colorDisabledButton);
+  }
+
   .ripple {
-    z-index: 100;
+    z-index: 200;
     position: absolute; /* The absolute position we mentioned earlier */
     border-radius: 50%;
     transform: scale(0);
     animation: ripple 600ms linear;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.5);
   }
 }
 

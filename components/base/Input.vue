@@ -1,7 +1,8 @@
 <template lang="pug">
-.inputContainer
+.inputContainer(:class='classes')
   .label(v-if='label') {{ label }}
   input.input(:placeholder='placeholder', v-on='$listeners')
+  .textError(v-if='error') {{ error }}
 </template>
 
 <script>
@@ -10,6 +11,15 @@ export default {
   props: {
     label: stringProp(),
     placeholder: stringProp(),
+    error: stringProp(),
+  },
+
+  computed: {
+    classes() {
+      return {
+        error: this.error,
+      }
+    },
   },
 }
 </script>
@@ -35,6 +45,7 @@ export default {
     padding: 0 12px;
 
     text-align: center;
+    color: var(--colorText2);
 
     &::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -56,6 +67,22 @@ export default {
       &::placeholder {
         color: transparent;
       }
+    }
+  }
+
+  .textError {
+    margin-top: 10px;
+
+    color: #de3235;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  &.error {
+    .input {
+      border: 1px solid #de3235;
     }
   }
 }
