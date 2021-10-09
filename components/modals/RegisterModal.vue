@@ -2,14 +2,15 @@
 transition(name='slide-fade')
   .modalContainer(v-if='isOpen')
     .backdrop
-    RegisterLayout(@onCancel='$emit("onCancel")')
+    RegisterLayout(@onCancel='onCancel')
       swiper(ref='modalSwiper', :options='{ allowTouchMove: false }')
         swiper-slide
-          Step2
-        swiper-slide
           Step1(@nextStep='handleStep1Complete')
-        //- swiper-slide
-        //-   Step2
+        swiper-slide
+          Step2(
+            :basicInforUser='{ username, email }',
+            :isActive='isStep2Active'
+          )
 </template>
 <script>
 import Step1 from '@/components/modals/register-modal-component/Step1'
@@ -18,7 +19,8 @@ import RegisterLayout from '@/components/modals/register-layout/RegisterLayout'
 
 import { booleanProp } from '@/helper/props'
 
-const INDEX_SLIDE_STEP_2 = 2
+const SLIDE_CHANGE_SPEED = 1000
+const DELAY_EFFECT = 200
 
 export default {
   components: {
@@ -35,15 +37,11 @@ export default {
     return {
       username: '',
       email: '',
-    }
-  },
 
-  computed: {
-    swiperInstance() {
-      if (!this.$refs.modalSwiper || !this.$refs.modalSwiper.$swiper)
-        return null
-      return this.$refs.modalSwiper.$swiper
-    },
+      //ui state
+      isStep2Active: false,
+      timeout: 0,
+    }
   },
 
   methods: {
@@ -51,7 +49,22 @@ export default {
       this.username = data.username
       this.email = data.email
 
-      this.swiperInstance.slideTo(INDEX_SLIDE_STEP_2)
+      console.log('detect event from modal')
+
+      this.setActiveStep2()
+    },
+
+    setActiveStep2() {
+      clearTimeout(this.timeout)
+      this.timeout = setTimeout(() => {
+        this.$refs.modalSwiper.$swiper.slideNext()
+        this.isStep2Active = true
+      }, DELAY_EFFECT)
+    },
+
+    onCancel() {
+      this.$emit('onCancel')
+      this.isStep2Active = false
     },
   },
 }

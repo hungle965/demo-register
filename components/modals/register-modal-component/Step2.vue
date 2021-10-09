@@ -1,5 +1,5 @@
 <template lang="pug">
-form.step2
+form.step2(:class='{ active: isExpand }')
   BaseInput(
     v-model='password',
     type='password',
@@ -50,6 +50,9 @@ import Plus from '@/components/icons/Plus'
 import { required, sameAs } from 'vuelidate/lib/validators'
 
 import { mixLoading } from '@/libs/mixins/loading'
+import { objectProp, booleanProp } from '@/helper/props'
+
+const EFFECT_DELAY = 500
 
 const MIN_LENGTH_PASSWORD = 8
 const PATTERN_LOWERCASE = /[a-z]/
@@ -86,14 +89,16 @@ export default {
 
   mixins: [mixLoading()],
 
+  props: {
+    basicInforUser: objectProp(),
+    isActive: booleanProp(),
+  },
+
   data() {
     return {
       // modal state
       password: '',
       cfPassword: '',
-
-      // display state
-      isRequirement: true,
 
       // meta data
       validateData: [
@@ -123,6 +128,10 @@ export default {
           isValidate: false,
         },
       ],
+
+      // display state
+      isRequirement: false,
+      isExpand: false,
     }
   },
 
@@ -157,6 +166,17 @@ export default {
     },
   },
 
+  watch: {
+    isActive(newValue) {
+      if (newValue) {
+        setTimeout(() => {
+          this.toggleRequirement()
+          this.isExpand = true
+        }, EFFECT_DELAY)
+      }
+    },
+  },
+
   methods: {
     handleSubmitForm(e) {
       e.preventDefault()
@@ -164,8 +184,31 @@ export default {
       // handle validate input
       this.$v.$touch()
 
-      // validate failed
+      // validate failed˝
       if (this.$v.$invalid) return
+
+      // validate success
+      this.handleValidateSuccess()
+    },
+
+    handleValidateSuccess() {
+      const { username, email } = this.basicInforUser
+
+      if (!username || !email || !this.password)
+        return console.log('Something wrong...')
+
+      this.loading()
+      this.$api_instance
+        .register(username, email, this.password)
+        .then(res => {
+          console.log('success: ', res)
+        })
+        .catch(err => {
+          console.log('error: ', err)
+        })
+        .finally(() => {
+          this.loaded()
+        })
     },
 
     handleInputChange() {
@@ -190,6 +233,11 @@ export default {
 
 .step2 {
   @include bodyRegisterModal;
+  max-height: 265px;
+
+  &.active {
+    max-height: unset;
+  }
 
   .requirementsContainer {
     @include textStyleMini;

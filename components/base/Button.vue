@@ -2,7 +2,7 @@
 button.btn(
   v-wave,
   type='submit',
-  :disabled='disabled',
+  :disabled='disabled || loading',
   :class='classes',
   v-on='$listeners',
   @click='createRipple'
