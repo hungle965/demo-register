@@ -152,7 +152,7 @@ export default {
       if (!this.$v.$dirty) return ''
       if (!this.$v.cfPassword.required) return this.$t('cf_password_required')
       if (!this.$v.cfPassword.sameAssPassword)
-        return this.$t('The password you entered does not match.')
+        return this.$t('password_not_match')
       return ''
     },
   },

@@ -23,6 +23,8 @@ export default {
   re_confirm_password: 'Re-confirm password',
   sign_up: 'Sign up',
 
+  password_not_match: 'The password you entered does not match.',
+
   validate_min_length_str: 'Must contain at least 8 characters',
   validate_lowercase_str: 'Must contain at least 1 lowercase (a-z)',
   validate_uppercase_str: 'Must contain at least 1 uppercase (A-Z)',
