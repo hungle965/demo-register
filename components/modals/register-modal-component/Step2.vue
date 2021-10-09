@@ -207,7 +207,11 @@ export default {
         .register(username, email, this.password)
         .then(res => {
           console.log('success: ', res)
-          this.$emit('nextStep')
+          this.isExpand = false
+          setTimeout(() => {
+            this.toggleRequirement()
+            this.$emit('nextStep')
+          }, EFFECT_DELAY)
         })
         .catch(err => {
           console.log('error: ', err)
@@ -241,8 +245,11 @@ export default {
   @include bodyRegisterModal;
   max-height: 265px;
 
+  transition-timing-function: ease-in-out;
+  @include transitionFor(0.2s, max-height);
+
   &.active {
-    max-height: unset;
+    max-height: 500px;
   }
 
   .requirementsContainer {

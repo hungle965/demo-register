@@ -5,8 +5,6 @@ transition(name='slide-fade')
     RegisterLayout(@onCancel='onCancel')
       swiper(ref='modalSwiper', :options='{ allowTouchMove: false }')
         swiper-slide
-          Step3
-        swiper-slide
           Step1(@nextStep='handleStep1Complete')
         swiper-slide
           Step2(

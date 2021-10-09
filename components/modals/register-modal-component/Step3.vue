@@ -1,7 +1,8 @@
 <template lang="pug">
 .step3
   label Congratulations, you have successfully created an account
-  .redirect Click here to login
+  NuxtLink(to='/login')
+    .redirect Click here to login
 </template>
 <script>
 export default {}
@@ -18,6 +19,7 @@ export default {}
   .redirect {
     text-decoration: underline;
     cursor: pointer;
+    color: var(--colorText2);
   }
 }
 </style>
