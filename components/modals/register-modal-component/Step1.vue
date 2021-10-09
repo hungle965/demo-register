@@ -21,19 +21,20 @@ form.step1
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 
+import { mixLoading } from '@/libs/mixins/loading'
+
 export default {
+  mixins: [mixLoading()],
+
   data() {
     return {
-      // user state
+      // modal state
       username: '',
       email: '',
 
       // server error state
       usernameServerError: '',
       emailServerError: '',
-
-      // display state
-      isLoading: false,
     }
   },
 
@@ -69,8 +70,6 @@ export default {
       // handle validate input
       this.$v.$touch()
 
-      console.log(this.$v)
-
       // validate failed
       if (this.$v.$invalid) return
 
@@ -79,12 +78,10 @@ export default {
       this.$api_instance
         .checkRegisterInfo(this.email, this.username)
         .then(res => {
-          console.log('success: ', res)
           this.usernameServerError = res.data.data.username
           this.emailServerError = res.data.data.email
 
           if (!this.usernameServerError && !this.emailServerError) {
-            console.log('handle next step 2')
             this.$emit('nextStep', {
               username: this.username,
               email: this.email,
@@ -97,16 +94,6 @@ export default {
         .finally(() => {
           this.loaded()
         })
-    },
-
-    severCheckValue() {},
-
-    loading() {
-      this.isLoading = true
-    },
-
-    loaded() {
-      this.isLoading = false
     },
   },
 }

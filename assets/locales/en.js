@@ -22,4 +22,11 @@ export default {
   confirm_password: 'Confirm password',
   re_confirm_password: 'Re-confirm password',
   sign_up: 'Sign up',
+
+  validate_min_length_str: 'Must contain at least 8 characters',
+  validate_lowercase_str: 'Must contain at least 1 lowercase (a-z)',
+  validate_uppercase_str: 'Must contain at least 1 uppercase (A-Z)',
+  validate_one_digit_str: 'Must contain at least one digit (0-9)',
+  validate_special_character_str:
+    'Must contain at least 1 special character (punctuation)',
 }

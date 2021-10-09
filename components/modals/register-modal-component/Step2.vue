@@ -35,7 +35,7 @@ form.step2
             src='@/assets/img/svg/checking-error.svg',
             alt='ic_error'
           )
-        .validateString {{ item.errStr }}
+        .validateString {{ $t(item.errStr) }}
   .labelError(v-if='cfPasswordError') {{ cfPasswordError }}
   BaseButton(
     :disabled='$v.$invalid',
@@ -48,6 +48,8 @@ import Minus from '@/components/icons/Minus'
 import Plus from '@/components/icons/Plus'
 
 import { required, sameAs } from 'vuelidate/lib/validators'
+
+import { mixLoading } from '@/libs/mixins/loading'
 
 const MIN_LENGTH_PASSWORD = 8
 const PATTERN_LOWERCASE = /[a-z]/
@@ -82,39 +84,42 @@ export default {
     Plus,
   },
 
+  mixins: [mixLoading()],
+
   data() {
     return {
-      // user state
+      // modal state
       password: '',
       cfPassword: '',
 
       // display state
-      isLoading: false,
       isRequirement: true,
+
+      // meta data
       validateData: [
         {
           func: 'minLength',
-          errStr: 'Must contain at least 8 characters',
+          errStr: 'validate_min_length_str',
           isValidate: false,
         },
         {
           func: 'hasLowerCase',
-          errStr: 'Must contain at least 1 lowercase (a-z)',
+          errStr: 'validate_lowercase_str',
           isValidate: false,
         },
         {
           func: 'hasUpperCase',
-          errStr: 'Must contain at least 1 uppercase (A-Z)',
+          errStr: 'validate_uppercase_str',
           isValidate: false,
         },
         {
           func: 'hasNumber',
-          errStr: 'Must contain at least one digit (0-9)',
+          errStr: 'validate_one_digit_str',
           isValidate: false,
         },
         {
           func: 'hasSpecialCharacter',
-          errStr: 'Must contain at least 1 special character (punctuation) ',
+          errStr: 'validate_special_character_str',
           isValidate: false,
         },
       ],
@@ -130,6 +135,7 @@ export default {
       hasNumber,
       hasSpecialCharacter,
     },
+
     cfPassword: {
       required,
       sameAssPassword: sameAs('password'),
@@ -155,8 +161,6 @@ export default {
     handleSubmitForm(e) {
       e.preventDefault()
 
-      console.log('submit...', this.$v)
-
       // handle validate input
       this.$v.$touch()
 
@@ -165,24 +169,13 @@ export default {
     },
 
     handleInputChange() {
+      // call function after computed validate
       setTimeout(() => {
-        console.log(this.$v.password)
-        const updateValidateValue = this.validateData.map(element => {
+        this.validateData = this.validateData.map(element => {
           element.isValidate = this.$v.password[element.func]
           return element
         })
-        this.validateData = [...updateValidateValue]
       }, 0)
-    },
-
-    severCheckValue() {},
-
-    loading() {
-      this.isLoading = true
-    },
-
-    loaded() {
-      this.isLoading = false
     },
 
     toggleRequirement() {
@@ -223,6 +216,7 @@ export default {
       max-height: 0;
       padding-top: 0;
       overflow: hidden;
+
       transition-timing-function: ease-in-out;
       @include transitionFor(0.2s, max-height, padding-top);
 
