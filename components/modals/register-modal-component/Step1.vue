@@ -14,7 +14,7 @@ form.step1
     :error='emailError'
   )
 
-  .labelError(v-if='error') {{ error }}
+  .labelError(v-if='error') {{ $t(error) }}
 
   BaseButton(
     :loading='isLoading',
