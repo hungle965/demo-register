@@ -8,6 +8,7 @@ form.step2(:class='{ active: isExpand }')
     :styleError='Boolean(passwordError)',
     @input='handleInputChange'
   )
+
   BaseInput(
     v-model='cfPassword',
     type='password',
@@ -16,12 +17,14 @@ form.step2(:class='{ active: isExpand }')
     :styleError='Boolean(cfPasswordError)',
     @input='handleInputChange'
   )
+
   .requirementsContainer
     .header(:class='{ error: passwordError }')
-      label Requirements
+      label {{ $t("requirements") }}
       .expandIcon(@click='toggleRequirement')
         Minus(v-if='isRequirement')
         Plus(v-else)
+
     .content(:class='{ show: isRequirement }')
       .item(v-for='(item, i) in validateData', :key='item.func')
         .iconChecking
@@ -36,7 +39,9 @@ form.step2(:class='{ active: isExpand }')
             alt='ic_error'
           )
         .validateString {{ $t(item.errStr) }}
+
   .labelError(v-if='cfPasswordError') {{ cfPasswordError }}
+
   BaseButton(
     :disabled='$v.$invalid',
     :loading='isLoading',
@@ -202,6 +207,7 @@ export default {
         .register(username, email, this.password)
         .then(res => {
           console.log('success: ', res)
+          this.$emit('nextStep')
         })
         .catch(err => {
           console.log('error: ', err)

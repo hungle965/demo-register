@@ -6,13 +6,16 @@ form.step1
     :placeholder='$t("enter_username")',
     :error='usernameError'
   )
+
   BaseInput(
     v-model='email',
     :label='$t("email_address")',
     :placeholder='$t("enter_email_address")',
     :error='emailError'
   )
+
   .labelError(v-if='error') {{ error }}
+
   BaseButton(
     :loading='isLoading',
     @click='handleSubmitForm',

@@ -31,4 +31,6 @@ export default {
   validate_one_digit_str: 'Must contain at least one digit (0-9)',
   validate_special_character_str:
     'Must contain at least 1 special character (punctuation)',
+
+  requirements: 'Requirements',
 }
