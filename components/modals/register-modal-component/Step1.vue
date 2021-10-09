@@ -39,17 +39,16 @@ export default {
 
   computed: {
     usernameError() {
-      if (this.$v.$dirty && !this.$v.username.required)
-        return this.$t('username_required')
+      if (this.$v.$dirty) return ''
+      if (!this.$v.username.required) return this.$t('username_required')
       if (this.usernameServerError) return this.$t('username_used')
       return ''
     },
 
     emailError() {
-      if (this.$v.$dirty && !this.$v.email.required)
-        return this.$t('email_required')
-      if (this.$v.$dirty && !this.$v.email.email)
-        return this.$t('email_invalid')
+      if (this.$v.$dirty) return ''
+      if (!this.$v.email.required) return this.$t('email_required')
+      if (!this.$v.email.email) return this.$t('email_invalid')
       if (this.emailServerError) return this.$t('email_used')
       return ''
     },

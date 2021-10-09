@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { stringProp } from '@/helper/props'
+import { stringProp, booleanProp } from '@/helper/props'
 export default {
   props: {
     propVal: stringProp(),
@@ -26,6 +26,7 @@ export default {
     placeholder: stringProp(),
     error: stringProp(),
     type: stringProp('text'),
+    styleError: booleanProp(),
   },
 
   model: {
@@ -46,7 +47,7 @@ export default {
   computed: {
     classes() {
       return {
-        error: this.error,
+        error: this.error || this.styleError,
       }
     },
 
@@ -73,13 +74,14 @@ export default {
   methods: {
     toggleTypePassword() {
       this.showText = !this.showText
-      console.log('show text', this.showText)
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/css/_mix.scss' as *;
+
 .inputContainer {
   width: 100%;
   position: relative;
@@ -130,18 +132,14 @@ export default {
   .textError {
     margin-top: 10px;
 
-    color: #de3235;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 16px;
-    text-align: center;
+    @include textStyleError;
   }
 
   .iconShowPassword {
     position: absolute;
     right: 0;
     z-index: 100;
-    bottom: calc((38px / 2) - 5px);
+    top: calc(34px);
 
     margin: auto 10px;
     cursor: pointer;

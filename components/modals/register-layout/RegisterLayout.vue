@@ -70,17 +70,14 @@
 
       .mainBannerWrapper {
         @include flexCenter;
+        @include textStyleHeader;
+
         width: 100%;
         max-width: 200px;
         height: 42px;
         border-radius: 5px;
 
         background: #0e191f;
-
-        color: #dbf9ff;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 20px;
       }
 
       .line {

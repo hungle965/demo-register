@@ -21,4 +21,5 @@ export default {
 
   confirm_password: 'Confirm password',
   re_confirm_password: 'Re-confirm password',
+  sign_up: 'Sign up',
 }

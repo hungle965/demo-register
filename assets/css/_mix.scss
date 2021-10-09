@@ -20,16 +20,6 @@
   align-items: center;
 }
 
-@mixin textStyleButton {
-  font-size: 14px;
-  line-height: 18px;
-  font-style: normal;
-  font-weight: bold;
-  text-align: center;
-
-  color: var(--colorBodyText);
-}
-
 @mixin overBody($position: fixed) {
   position: $position;
   width: 100%;
@@ -53,4 +43,37 @@
   gap: 20px;
 
   transition: all 0.5s ease;
+}
+
+@mixin textStyleButton {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+  text-align: center;
+
+  color: var(--colorBodyText);
+}
+
+@mixin textStyleHeader {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+
+  color: var(--colorHeader);
+}
+
+@mixin textStyleMini {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+
+  color: var(--colorText2);
+}
+
+@mixin textStyleError {
+  color: #de3235;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
 }

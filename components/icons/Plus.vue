@@ -1,0 +1,74 @@
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    x="0px"
+    y="0px"
+    width="12"
+    height="12"
+    viewBox="0 0 172 172"
+    fill="none"
+  >
+    <g transform="translate(4.988,4.988) scale(0.942,0.942)">
+      <g
+        fill="none"
+        fill-rule="nonzero"
+        stroke="none"
+        stroke-width="none"
+        stroke-linecap="butt"
+        stroke-linejoin="none"
+        stroke-miterlimit="10"
+        stroke-dasharray=""
+        stroke-dashoffset="0"
+        font-family="none"
+        font-weight="none"
+        font-size="none"
+        text-anchor="none"
+        style="mix-blend-mode: normal"
+      >
+        <g
+          fill="#000000"
+          stroke="#cccccc"
+          stroke-width="10"
+          stroke-linejoin="round"
+          opacity="true"
+        >
+          <path
+            d="M150.5,86c0,3.956 -3.21067,7.16667 -7.16667,7.16667h-50.16667v50.16667c0,3.956 -3.21067,7.16667 -7.16667,7.16667c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667v-50.16667h-50.16667c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667h50.16667v-50.16667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667c3.956,0 7.16667,3.21067 7.16667,7.16667v50.16667h50.16667c3.956,0 7.16667,3.21067 7.16667,7.16667z"
+          ></path>
+        </g>
+        <path
+          d="M0,172v-172h172v172z"
+          fill="none"
+          stroke="none"
+          stroke-width="1"
+          stroke-linejoin="miter"
+        ></path>
+        <g
+          id="original-icon"
+          fill="#000000"
+          stroke="none"
+          stroke-width="1"
+          stroke-linejoin="miter"
+        >
+          <path
+            d="M143.33333,78.83333h-50.16667v-50.16667c0,-3.956 -3.21067,-7.16667 -7.16667,-7.16667c-3.956,0 -7.16667,3.21067 -7.16667,7.16667v50.16667h-50.16667c-3.956,0 -7.16667,3.21067 -7.16667,7.16667c0,3.956 3.21067,7.16667 7.16667,7.16667h50.16667v50.16667c0,3.956 3.21067,7.16667 7.16667,7.16667c3.956,0 7.16667,-3.21067 7.16667,-7.16667v-50.16667h50.16667c3.956,0 7.16667,-3.21067 7.16667,-7.16667c0,-3.956 -3.21067,-7.16667 -7.16667,-7.16667z"
+          ></path>
+        </g>
+        <path
+          d=""
+          fill="none"
+          stroke="none"
+          stroke-width="1"
+          stroke-linejoin="miter"
+        ></path>
+        <path
+          d=""
+          fill="none"
+          stroke="none"
+          stroke-width="1"
+          stroke-linejoin="miter"
+        ></path>
+      </g>
+    </g>
+  </svg>
+</template>
