@@ -3,6 +3,11 @@
 ## Build Setup
 
 ```bash
+
+# set up dev environments
+$ setup file .env
+$ NUXT_ENV_API_BASE_URL=https://untamebe.signals.vn
+
 # install dependencies
 $ npm install
 
