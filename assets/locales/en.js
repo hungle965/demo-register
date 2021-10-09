@@ -33,4 +33,6 @@ export default {
     'Must contain at least 1 special character (punctuation)',
 
   requirements: 'Requirements',
+
+  some_thing_wrong: 'Something wrong',
 }
