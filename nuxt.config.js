@@ -30,4 +30,8 @@ export default {
   server: {
     host: DEFAULT_HOST,
   },
+
+  generate: {
+    dir: 'public',
+  },
 }
