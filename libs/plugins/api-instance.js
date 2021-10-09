@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE_URL = 'https://untamebe.signals.vn'
+const API_BASE_URL = process.env.NUXT_ENV_API_BASE_URL
 const DEFAULT_TIMEOUT = 10000
 
 const axiosInstance = axios.create({
